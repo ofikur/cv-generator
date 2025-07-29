@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "CV Generator",
+  title: "QuickCV - CV Generator",
   description: "Membuat CV profesional dengan mudah dan cepat",
 };
 
