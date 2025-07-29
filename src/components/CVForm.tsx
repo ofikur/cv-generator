@@ -1,4 +1,4 @@
-import { CVData, Education, Experience } from '@/app/page';
+import { CVData } from '@/app/page';
 import { User, Briefcase, GraduationCap, Sparkles, PlusCircle, XCircle } from 'lucide-react';
 
 interface Props {

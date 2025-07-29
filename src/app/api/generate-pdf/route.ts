@@ -96,7 +96,6 @@ export async function POST(req: NextRequest) {
     if (process.env.NODE_ENV === 'production') {
       browser = await puppeteer.launch({
         args: chromium.args,
-        defaultViewport: chromium.defaultViewport,
         executablePath: await chromium.executablePath(),
         headless: chromium.headless,
       });
@@ -111,7 +110,7 @@ export async function POST(req: NextRequest) {
     const page = await browser.newPage();
     await page.setContent(getCvHtml(data), { waitUntil: 'networkidle0' });
     
-    const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true });
+    const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true, preferCSSPageSize: true });
     await browser.close();
 
     return new NextResponse(pdfBuffer, {
