@@ -20,7 +20,7 @@ export default function ResetModal({ isOpen, onClose, onResetToDefault, onResetT
         
         <div className="space-y-3">
           <button onClick={onResetToDefault} className="w-full flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition-colors">
-            <RefreshCw size={16} /> Kembalikan ke Contoh Awal
+            <RefreshCw size={16} /> Kembalikan ke Demo Awal
           </button>
           
           <button onClick={onResetToBlank} className="w-full flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg transition-colors" >
