@@ -18,17 +18,18 @@ const FormSection = ({ icon, title, children }: { icon: React.ReactNode, title: 
   </div>
 );
 
-const InputField = ({ name, value, onChange, placeholder, label }: any) => (
+interface InputFieldProps {
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  placeholder?: string;
+  label: string;
+}
+
+const InputField = ({ name, value, onChange, placeholder, label }: InputFieldProps) => (
   <div>
     <label className="block text-sm font-medium text-gray-600 mb-1">{label}</label>
-    <input
-      type="text"
-      name={name}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className="w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 text-sm p-2.5 border text-gray-900 placeholder:text-gray-400"
-    />
+    <input type="text" name={name} value={value} onChange={onChange} placeholder={placeholder} className="w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 text-sm p-2.5 border text-gray-900 placeholder:text-gray-400" />
   </div>
 );
 
@@ -38,7 +39,7 @@ export default function CVForm({ cvData, setCvData }: Props) {
     setCvData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleDynamicChange = <T extends Education | Experience>(
+  const handleDynamicChange = (
     index: number, 
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     section: 'education' | 'experience'
@@ -81,10 +82,10 @@ export default function CVForm({ cvData, setCvData }: Props) {
         {cvData.experience.map((exp, index) => (
           <div key={index} className="p-3 border rounded-lg space-y-3 bg-gray-50 relative">
              <button type="button" onClick={() => removeSectionItem(index, 'experience')} className="absolute top-2 right-2 text-gray-400 hover:text-red-500"><XCircle size={20} /></button>
-             <InputField label="Posisi" name="position" value={exp.position} onChange={(e: any) => handleDynamicChange(index, e, 'experience')} />
-             <InputField label="Perusahaan" name="company" value={exp.company} onChange={(e: any) => handleDynamicChange(index, e, 'experience')} />
-             <InputField label="Durasi" name="duration" value={exp.duration} onChange={(e: any) => handleDynamicChange(index, e, 'experience')} placeholder="cth: 2023 - Sekarang"/>
-             <textarea name="description" value={exp.description} onChange={(e: any) => handleDynamicChange(index, e, 'experience')} rows={3} className="w-full rounded-md border-gray-300 shadow-sm p-2.5 border text-sm text-gray-900 placeholder:text-gray-400" placeholder="Deskripsi pekerjaan..."/>
+             <InputField label="Posisi" name="position" value={exp.position} onChange={(e) => handleDynamicChange(index, e, 'experience')} />
+             <InputField label="Perusahaan" name="company" value={exp.company} onChange={(e) => handleDynamicChange(index, e, 'experience')} />
+             <InputField label="Durasi" name="duration" value={exp.duration} onChange={(e) => handleDynamicChange(index, e, 'experience')} placeholder="cth: 2023 - Sekarang"/>
+             <textarea name="description" value={exp.description} onChange={(e) => handleDynamicChange(index, e, 'experience')} rows={3} className="w-full rounded-md border-gray-300 shadow-sm p-2.5 border text-sm text-gray-900 placeholder:text-gray-400" placeholder="Deskripsi pekerjaan..."/>
           </div>
         ))}
         <button type="button" onClick={() => addSectionItem('experience')} className="w-full flex items-center justify-center gap-2 text-sm bg-red-50 hover:bg-red-100 text-red-600 font-semibold py-2 rounded-md transition-colors">
@@ -96,9 +97,9 @@ export default function CVForm({ cvData, setCvData }: Props) {
         {cvData.education.map((edu, index) => (
           <div key={index} className="p-3 border rounded-lg space-y-3 bg-gray-50 relative">
             <button type="button" onClick={() => removeSectionItem(index, 'education')} className="absolute top-2 right-2 text-gray-400 hover:text-red-500"><XCircle size={20} /></button>
-            <InputField label="Nama Sekolah/Universitas" name="school" value={edu.school} onChange={(e: any) => handleDynamicChange(index, e, 'education')} />
-            <InputField label="Gelar/Jurusan" name="degree" value={edu.degree} onChange={(e: any) => handleDynamicChange(index, e, 'education')} />
-            <InputField label="Tahun" name="year" value={edu.year} onChange={(e: any) => handleDynamicChange(index, e, 'education')} placeholder="cth: 2021 - 2025" />
+            <InputField label="Nama Sekolah/Universitas" name="school" value={edu.school} onChange={(e) => handleDynamicChange(index, e, 'education')} />
+            <InputField label="Gelar/Jurusan" name="degree" value={edu.degree} onChange={(e) => handleDynamicChange(index, e, 'education')} />
+            <InputField label="Tahun" name="year" value={edu.year} onChange={(e) => handleDynamicChange(index, e, 'education')} placeholder="cth: 2021 - 2025" />
           </div>
         ))}
         <button type="button" onClick={() => addSectionItem('education')} className="w-full flex items-center justify-center gap-2 text-sm bg-red-50 hover:bg-red-100 text-red-600 font-semibold py-2 rounded-md transition-colors">
