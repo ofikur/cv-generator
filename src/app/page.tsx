@@ -47,7 +47,7 @@ export default function Home() {
               <RefreshCw size={16} /> Reset Data
             </button>
             <button onClick={handleDownloadPdf} disabled={loading} className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 disabled:bg-gray-400">
-              {loading ? 'Sedang Meracik PDF...' : 'Download PDF Keren Ini!'}
+              {loading ? 'Sedang Membuat PDF...' : 'Download PDF'}
             </button>
           </div>
         </div>
