@@ -115,7 +115,7 @@ export async function POST(req: NextRequest) {
     return new NextResponse(pdfBuffer, {
       headers: {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': `attachment; filename="CV_${data.name.replace(/\s/g, '_')}.pdf"`,
+        'Content-Disposition': `attachment; filename="QuickCV_${data.name.replace(/\s/g, '_')}.pdf"`,
       },
     });
   } catch (error) {
