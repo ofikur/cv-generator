@@ -68,8 +68,9 @@ jobs:
           git commit -m "Update Status: Active [$DATE WIB]"
 
       - name: Push Changes
-
-        run: git push
+        run: |
+          git pull origin main
+          git push
 
 
 
